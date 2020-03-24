@@ -4,6 +4,10 @@ import './App.css';
 import { ActivityChecker } from './ActivityChecker';
 
 function App() {
+  function onTimeout() {
+    console.log('Timeout');
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,7 +24,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <ActivityChecker timeout={10}></ActivityChecker>
+      <ActivityChecker timeout={10} onTimeout={onTimeout}></ActivityChecker>
     </div>
   );
 }

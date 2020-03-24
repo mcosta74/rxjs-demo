@@ -4,6 +4,7 @@ import { takeUntil, repeat } from 'rxjs/operators';
 
 export interface ActivityCheckerProps {
   timeout: number;
+  onTimeout: () => void;
 };
 
 export function ActivityChecker(props: ActivityCheckerProps) {
@@ -20,9 +21,7 @@ export function ActivityChecker(props: ActivityCheckerProps) {
       takeUntil(sources$),  // we kill the timer as soon one event is emitted
       repeat(),  // restart the timer
     ).subscribe(
-      () => {
-        console.error('Timeout');
-      }
+      () => props.onTimeout()
     )
 
     return () => sub.unsubscribe();
