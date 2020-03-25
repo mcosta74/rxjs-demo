@@ -1,3 +1,5 @@
+![](https://github.com/mcosta74/rxjs-demo/workflows/CI/badge.svg)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
