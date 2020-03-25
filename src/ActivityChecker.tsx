@@ -9,6 +9,7 @@ export interface ActivityCheckerProps {
 
 export function ActivityChecker(props: ActivityCheckerProps) {
 
+  const { timeout, onTimeout } = props;
   useEffect(() => {
     // This observable merge all the events that shall restart the timer
     const sources$ = merge(
@@ -17,16 +18,15 @@ export function ActivityChecker(props: ActivityCheckerProps) {
       fromEvent(document, 'mousemove'),
     );
 
-    const sub = interval(props.timeout * 1000).pipe(
+    const sub = interval(timeout * 1000).pipe(
       takeUntil(sources$),  // we kill the timer as soon one event is emitted
       repeat(),  // restart the timer
     ).subscribe(
-      () => props.onTimeout()
+      () => onTimeout()
     )
 
     return () => sub.unsubscribe();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [timeout, onTimeout])
 
   return (
     <div>Hello</div>
