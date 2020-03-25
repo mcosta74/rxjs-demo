@@ -25,6 +25,7 @@ export function ActivityChecker(props: ActivityCheckerProps) {
     )
 
     return () => sub.unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
