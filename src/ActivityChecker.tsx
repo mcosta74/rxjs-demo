@@ -29,6 +29,6 @@ export function ActivityChecker(props: ActivityCheckerProps) {
   }, [timeout, onTimeout])
 
   return (
-    <div>Hello</div>
+    <div data-testid="activity-checker">Hello</div>
   )
 }
